@@ -1,16 +1,18 @@
 package com.mursalin.queue_monitoring_system.controller;
 
+import com.mursalin.queue_monitoring_system.dto.DoctorDto;
 import com.mursalin.queue_monitoring_system.model.Doctor;
 import com.mursalin.queue_monitoring_system.service.DoctorService;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin/add-doctor")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class DoctorController {
 
