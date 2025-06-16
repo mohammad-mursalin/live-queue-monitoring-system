@@ -16,6 +16,8 @@ public class DoctorController {
 
     private final DoctorService doctorService;
 
+    @PostMapping("/admin/add-doctor")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addDoctor(@RequestBody @NotNull Doctor doctor) {
         return doctorService.addDoctor(doctor);
     }
