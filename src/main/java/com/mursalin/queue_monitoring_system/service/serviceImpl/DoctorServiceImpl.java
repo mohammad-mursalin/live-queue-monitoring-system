@@ -1,5 +1,6 @@
 package com.mursalin.queue_monitoring_system.service.serviceImpl;
 
+import com.mursalin.queue_monitoring_system.dto.DoctorDto;
 import com.mursalin.queue_monitoring_system.model.Doctor;
 import com.mursalin.queue_monitoring_system.repository.DoctorRepository;
 import com.mursalin.queue_monitoring_system.service.DoctorService;
@@ -16,7 +17,7 @@ public class DoctorServiceImpl implements DoctorService {
     private final DoctorRepository doctorRepository;
 
     @Override
-    public ResponseEntity<?> getAllDoctors() {
+    public ResponseEntity<List<DoctorDto>> getAllDoctors() {
         List<Doctor> doctors = doctorRepository.findAll();
         return new ResponseEntity<>(doctors, HttpStatus.OK);
     }
