@@ -2,15 +2,13 @@ package com.mursalin.queue_monitoring_system.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.security.config.annotation.web.messaging.MessageSecurityMetadataSourceRegistry;
-import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
@@ -32,17 +30,7 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
                 .setHeartbeatTime(60_000); // Prevent timeouts
     }
 
-    @Override
-    protected void configureInbound(MessageSecurityMetadataSourceRegistry messages) {
-        // Secure channels
-        messages
-                .simpDestMatchers("/topic/admin/**").hasRole("ADMIN")
-                .simpSubscribeDestMatchers("/topic/emergency-alerts").permitAll()
-                .anyMessage().authenticated();
-    }
 
-    @Override
-    protected boolean sameOriginDisabled() {
-        return true; // Required for WebSocket CSRF handling
-    }
+
+
 }
