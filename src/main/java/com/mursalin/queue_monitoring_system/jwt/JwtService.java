@@ -33,7 +33,7 @@ public class JwtService {
         return Jwts.builder()
                 .claims()
                 .add(claims)
-                .subject(String.valueOf(user.getId())) // user ID as subject
+                .subject(user.getId()) // user ID as subject
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 200 * 60 * 1000)) // e.g., 200 minutes expiry
                 .and()
