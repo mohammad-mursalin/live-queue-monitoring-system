@@ -54,4 +54,9 @@ public class AppointmentController {
     public ResponseEntity<?> bookAppointment(@NonNull @RequestBody AppointmentRequest appointmentRequest) {
         return appointmentService.createAppointment(appointmentRequest);
     }
+
+    @DeleteMapping("/cancel-appointment/{appointmentId}")
+    public ResponseEntity<?> cancelAppointment(@PathVariable String appointmentId) {
+        return appointmentService.cancelAppointment(appointmentId);
+    }
 }
