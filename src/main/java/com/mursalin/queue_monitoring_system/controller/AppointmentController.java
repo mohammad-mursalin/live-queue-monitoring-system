@@ -31,20 +31,20 @@ public class AppointmentController {
     }
 
     // User checks in (updates status to WAITING)
-    @PatchMapping("/{id}/check-in")
+    @PatchMapping("/{appointmentId}/check-in")
     public ResponseEntity<Appointment> checkIn(@PathVariable String appointmentId) {
         return ResponseEntity.ok(appointmentService.updateStatus(appointmentId, "WAITING"));
     }
 
     // Admin marks appointment as started
-    @PatchMapping("/{id}/start")
+    @PatchMapping("/{appointmentId}/start")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Appointment> startAppointment(@PathVariable String appointmentId) {
         return ResponseEntity.ok(appointmentService.updateStatus(appointmentId, "IN_SESSION"));
     }
 
     // Admin marks appointment as completed
-    @PatchMapping("/{id}/complete")
+    @PatchMapping("/{appointmentId}/complete")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Appointment> completeAppointment(@PathVariable String appointmentId) {
         return ResponseEntity.ok(appointmentService.updateStatus(appointmentId, "COMPLETED"));
