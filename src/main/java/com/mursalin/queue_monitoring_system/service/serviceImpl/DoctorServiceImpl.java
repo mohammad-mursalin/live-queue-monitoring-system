@@ -19,7 +19,8 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public ResponseEntity<List<DoctorDto>> getAllDoctors() {
         List<Doctor> doctors = doctorRepository.findAll();
-        return new ResponseEntity<>(doctors, HttpStatus.OK);
+        List<DoctorDto> doctorDtoList = doctors.stream().map(DoctorMapper::toDto).toList();
+        return new ResponseEntity<>(doctorDtoList, HttpStatus.OK);
     }
 
     @Override
