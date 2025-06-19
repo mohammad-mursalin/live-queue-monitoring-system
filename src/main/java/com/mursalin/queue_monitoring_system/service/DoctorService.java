@@ -11,4 +11,8 @@ public interface DoctorService {
     ResponseEntity<List<DoctorDto>> getAllDoctors();
 
     ResponseEntity<?> addDoctor(@NotNull Doctor doctor);
+
+    ResponseEntity<DoctorDto> updateDoctor(DoctorDto doctorDto);
+
+    ResponseEntity<?> removeDoctor(String id);
 }
