@@ -28,4 +28,20 @@ public class DoctorServiceImpl implements DoctorService {
         doctorRepository.save(doctor);
         return new ResponseEntity<>("New Doctor Added Successfully", HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<DoctorDto> updateDoctor(DoctorDto doctorDto) {
+        Doctor doctorDb = doctorRepository.findById(doctorDto.getId()).orElseThrow(() -> new RuntimeException("No Doctor found with this id"));
+        doctorDb.setName(doctorDto.getId());
+        doctorDb.setSchedule(doctorDto.getSchedule());
+        doctorDb.setSpecialty(doctorDto.getSpecialty());
+        doctorRepository.save(doctorDb);
+        return new ResponseEntity<>(doctorDto, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> removeDoctor(String id) {
+        doctorRepository.deleteById(id);
+        return new ResponseEntity<>("Doctor Removed successfully", HttpStatus.OK);
+    }
 }
