@@ -4,6 +4,7 @@ import com.mursalin.queue_monitoring_system.dto.DoctorDto;
 import com.mursalin.queue_monitoring_system.model.Doctor;
 import com.mursalin.queue_monitoring_system.repository.DoctorRepository;
 import com.mursalin.queue_monitoring_system.service.DoctorService;
+import com.mursalin.queue_monitoring_system.utils.DoctorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
