@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-    private final DoctorService doctorService;
 
     @PostMapping("/registration")
     public ResponseEntity<?> userRegistration(@NonNull @RequestBody UserDto userDto) {
@@ -27,9 +26,4 @@ public class UserController {
         return userService.userLogin(userDto);
     }
 
-    @GetMapping
-    @PreAuthorize("hasAnyRole('USER', 'PATIENT')")
-    public ResponseEntity<?> getAllDoctors() {
-        return doctorService.getAllDoctors();
-    }
 }
