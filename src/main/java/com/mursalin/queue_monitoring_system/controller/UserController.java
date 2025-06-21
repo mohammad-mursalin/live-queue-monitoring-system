@@ -22,7 +22,7 @@ public class UserController {
         return userService.registerUser(userDto);
     }
 
-    @GetMapping
+    @GetMapping("/login")
     public ResponseEntity<?> userLogin(@RequestBody @NonNull UserDto userDto) {
         return userService.userLogin(userDto);
     }
